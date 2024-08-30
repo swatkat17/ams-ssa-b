@@ -1,0 +1,43 @@
+header {
+  background: transparent;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  transition: all 0.5s;
+
+  &.invert {
+    background: rgb(255 255 255 / 90%);
+    color: #000;
+    box-shadow:0 0 4px 1px rgb(0 0 0 / 10%);
+  }
+
+  div {
+    position: relative;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    height: inherit;
+    display: flex;
+    align-items: center;
+
+    .home {
+      position: absolute;
+      left: 40px;
+      display: flex;
+      align-items: center;
+
+
+      span {
+        font-weight: 300;
+        margin: 5px 0 0 10px;
+        opacity: .8;
+      }
+    }
+
+    .search {
+      position: absolute;
+      right: 40px;
+      height: 24px;
+      width: 24px;
+      cursor: pointer;
+    }
+  }
+}

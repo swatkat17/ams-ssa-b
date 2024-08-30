@@ -1,0 +1,30 @@
+.speaker-notes-wrapper {
+  display: none
+}
+
+.speaker-notes-window {
+  padding: 60px 20px 40px;
+  font-family: 'arial';
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    background: #EB1000;
+    font-size: 16px;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,26 @@
+/* stylelint-disable declaration-block-single-line-max-declarations, no-descending-specificity, rule-empty-line-before, color-function-notation */
+@import url('./carousel.css');
+
+main > .section > div.featured-projects-wrapper {
+    display: flex;
+    width: 100%;
+    padding: 40px 0;
+
+  .feature {
+    flex: 0 0 40%;
+    padding-right: 40px;
+  }
+
+  .carousel {
+    flex: 0 0 60%;
+    background: gray;
+  }
+
+  .carousel .slide {
+    /* Add styles for carousel slides if needed */
+  }
+
+}
+
+
+

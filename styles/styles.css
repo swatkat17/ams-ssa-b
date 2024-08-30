@@ -1,0 +1,267 @@
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+:root {
+/* colors */
+	--red: #EB1000;
+	--dark-gray: #2c2c2c;
+	--light-gray: #f5f5f5;
+	--pink: #e63888;
+	--purple: #6349e0;
+	--blue: #3273de;
+	--light-blue: #2799f6;
+	--teal: #21a5a2;
+	--green: #009c3b;
+	--yellow: #ffce2e;
+	--orange: #e9740a;
+  --background: #f5f5f5;
+
+  /* elements */
+  --text: #252525;
+
+
+	/* fonts */
+  --body-font-family: 'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif;
+  --heading-font-family: 'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif;
+
+  /* body sizes */
+  --body-font-size-l: 28px;
+  --body-font-size-m: 22px;
+  --body-font-size-s: 19px;
+  --body-font-size-xs: 17px;
+
+  /* heading sizes */
+  --heading-font-size-xl: 44px;
+  --heading-font-size-l: 34px;
+  --heading-font-size-m: 30px;
+  --heading-font-size-s: 24px;
+
+  @media (width >= 900px) {
+    /* body sizes */
+    --body-font-size-l: 24px;
+    --body-font-size-m: 19px;
+    --body-font-size-s: 18px;
+    --body-font-size-xs: 14px;
+
+    /* heading sizes */
+    --heading-font-size-xl: 44px;
+    --heading-font-size-l: 36px;
+    --heading-font-size-m: 30px;
+    --heading-font-size-s: 20px;
+  }
+
+  /* dimensions */
+  --nav-height: 60px;
+  --page-width: 1400px;
+}
+
+/* fallback fonts */
+@font-face {
+  font-family: roboto-condensed-fallback;
+  size-adjust: 88.82%;
+  src: local('Arial');
+}
+
+@font-face {
+  font-family: roboto-fallback;
+  size-adjust: 99.529%;
+  src: local('Arial');
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  background: var(--background);
+  color: var(--text);
+  text-rendering: optimizelegibility;
+}
+
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 999;
+
+  /* sidekick fix */
+  helix-sidekick[pushdown] ~ & { top: 49px }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+  font-family: var(--heading-font-family);
+  font-weight: 900;
+  line-height: 1.25;
+  scroll-margin: 40px;
+}
+
+h1 { font-size: var(--heading-font-size-xl); }
+h2 { font-size: var(--heading-font-size-xl); }
+h3 { font-size: var(--heading-font-size-l); }
+h4 { font-size: var(--heading-font-size-m); }
+h5 { font-size: var(--heading-font-size-s); }
+h6 { font-size: var(--heading-font-size-s); }
+
+p, dl, ol, ul, pre, blockquote {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code, pre {
+  font-size: var(--body-font-size-s);
+}
+
+pre {
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+sup {
+  font-size: 0.8em;
+  vertical-align: super;
+  opacity: .7;
+  font-weight: 300;
+}
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+/* main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+/* } */
+
+ol {
+  padding: 0;
+  margin: 20px 0 0 20px;
+  list-style: none;
+  list-style-position: inside; /* Controls the position of the list marker */
+  counter-reset: list-item; /* Resets list item counter */
+}
+
+/* Styling for list items */
+ol li {
+  padding: 20px 0 10px; /* Add space around each item */
+  border-bottom: 1px solid #ddd; /* Add a subtle border between items */
+}
+
+/* Style for the numbers */
+ol li::before {
+  content: counter(list-item) ". "; /* Display numbers followed by a period */
+  font-weight: bold; /* Make numbers bold */
+  color: #007BFF; /* Use a color for the numbers (e.g., blue) */
+  margin-left: -20px; /* Space between the number and the text */
+}
+
+main {
+  background: var(--background);
+
+  > .section > div {
+    max-width: var(--page-width);
+    margin: auto;
+    padding: 10px 40px;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 100px rgb(0 0 0 / 30%);  /* Right shadow */
+  }
+
+  .default-content-wrapper {
+    padding-bottom: 60px !important;
+    font-weight: 300;
+    line-height: 1.4em;
+
+
+    picture img {
+      max-width: 90%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+  }
+}
+
+.btn, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 16px;
+  min-width: 72px;
+  height: 32px;
+  line-height: 1;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+  scale: 1;
+  color: var(--text);
+  transition: all ease-in-out 160ms;
+
+  &:hover {
+    /* background: rgb(0 0 0 / 20%); */
+    scale: 1.05;
+    box-shadow: 0 0 10px 2px rgb(0 0 0 / 30%);
+  }
+}
+
+
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+
+  img {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+button.cse-notes {
+  display: none;
+  opacity: .05;
+  border: none;
+  padding: 4px 20px;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+

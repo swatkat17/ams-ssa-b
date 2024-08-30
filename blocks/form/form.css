@@ -1,0 +1,158 @@
+/* stylelint-disable no-descending-specificity */
+.thank-you {
+  text-align: center;
+  padding: 10px;
+  margin: 20px 0;
+  background: #FFF6BF;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 20px;
+
+  .field-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media (width < 800px) {
+      display: block;
+    }
+
+    label {
+      width: 140px;
+      text-align: right;
+      margin-right: 10px;
+
+      @media (width < 800px) {
+        display: block;
+        text-align: left;
+      }
+
+      &[data-required]::after {
+        content: '*';
+        color: var(--red);
+        margin-left: 2px;
+      }
+    }
+
+    &.error {
+      position: relative;
+      padding-bottom: 22px;
+
+      .error-message {
+        position: absolute;
+        bottom: 0;
+        left: 150px;
+        color: var(--red);
+
+        @media (width < 800px) {
+          left: 0;
+        }
+      }
+    }
+
+
+    input,
+    select,
+    textarea {
+      flex: 1;
+      border: 1px solid var(--light-gray-2);
+      font-size: var(--body-font-size);
+      padding: 8px;
+      outline: none;
+
+      &[type="checkbox"] {
+        display: inline;
+        float: left;
+        width: auto;
+        margin-right: 6px;
+      }
+
+      @media (width < 800px) {
+        width: 90%;
+      }
+
+      &:focus {
+        border: 1px solid var(--blue);
+      }
+    }
+
+    &.checkbox-wrapper {
+      padding-left: 146px;
+      font-size: 95%;
+
+      @media (width < 800px) {
+        padding: 0;
+      }
+
+      label {
+        width: 100%;
+        text-align: left;
+      }
+    }
+
+    &.plaintext-wrapper {
+      padding-left: 140px;
+
+      @media (width < 800px) {
+        padding: 0;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      height: 84px;
+    }
+  }
+
+  .required {
+    margin-left: 10px;
+
+    p::before {
+      content: '*';
+      color: var(--red);
+      margin-right: 2px;
+    }
+  }
+
+  .submit-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.form-wrapper {
+  padding: 100px 0 120px !important;
+
+  form {
+    width: 70%;
+    margin: 0 auto;
+
+    input, textarea {
+      border: 1px solid #bababa !important;
+      margin: 1px 101px 1px 1px;
+
+      &:focus {
+        margin: 0 100px 0 0;
+        border: 2px solid var(--blue) !important;
+      }
+    }
+  }
+
+  > div {
+    h2 {
+      text-align: center;
+      margin: 0;
+      color: var(--teal);
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 26px;
+      margin: 10px 0 30px;
+    }
+  }
+}

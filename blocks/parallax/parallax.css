@@ -1,0 +1,124 @@
+/* stylelint-disable declaration-block-single-line-max-declarations, no-descending-specificity, rule-empty-line-before, color-function-notation, no-duplicate-selectors */
+body {
+  overflow-x: hidden;
+}
+
+#parallax-page-wrapper {
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: hidden;
+  perspective-origin: center center;
+  perspective: 2px; /* smaller value = more intense 3D effect */
+}
+
+#parallax-page-content {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  top: 60vh; /* match to height of #parallax */
+}
+
+#parallax {
+  height: 60vh; /* match */
+  transform-style: preserve-3d;
+
+  .layer {
+    position: absolute;
+    inset: 0;
+    background-position: bottom center;
+    background-size: cover;
+    height: 100vh;
+
+    /*
+      translate3d:
+      (X-axis [-left/+right], Y-axis [-up/+down], depth [-forward/+backward]
+    */
+    &.content-0 { /* foreground */
+      transform: translate3d(40%, 30%, -1.2px) scale(1.6);
+
+      @media (width <= 1800px) {
+        transform: translate3d(30%, 33%, -1.2px) scale(1.6);
+      }
+
+      @media (width >= 2600px) {
+        transform: translate3d(42%, 33%, -1.2px) scale(1.6);
+      }
+    }
+
+    &.img-1 { /* path */
+      transform: translate3d(0, -24%, -1.8px) scale(2);
+
+      @media (width <= 1800px) {
+        transform: translate3d(0, -26%, -1.5px) scale(1.8);
+      }
+    }
+
+    &.img-2 { /* dots */
+      transform: translate3d(0, -340px, -3px) scale(2);
+
+      @media (width <= 1800px) {
+        transform: translate3d(0, -50%, -3px) scale(2);
+      }
+    }
+
+    &.img-3 { /* background */
+      transform: translate3d(0, -80%, -5px) scale(3.8);
+
+      @media (width <= 1800px) {
+        transform: translate3d(0, -80%, -5px) scale(3.8);
+      }
+    }
+  }
+}
+
+/* design */
+#parallax {
+  .overlay {
+    position: absolute;
+    inset: 0;
+    top: calc(var(--nav-height) * -1);
+    left: 15px; /* todo: p10 strange alignment fix */
+    max-width: var(--page-width);
+    height: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 200px #000;
+  }
+
+  .layer {
+    #parallax.loaded &.content-0 {
+      opacity: 1;
+      filter: blur(0);
+      scale: 100%;
+      margin-left: 0;
+    }
+
+    &.content-0 { /* foreground text */
+      color: #fff;
+      opacity: 0;
+      filter: blur(20px);
+      scale: 100%;
+      margin-left: -120px;
+      transition: all 1s;
+
+      > div {
+        width: 500px;
+      }
+
+      h2 {
+        font-size: var(--heading-font-size-xl);
+        font-weight: 600;
+        margin: 0;
+        text-shadow: 2px 2px 8px rgb(0 0 0 / 90%);
+      }
+
+      p {
+        font-size: var(--body-font-size-l);
+        font-weight: 300;
+        line-height: 30px;
+        margin: 10px 0 0;
+        text-shadow: 2px 2px 8px rgb(0 0 0 / 90%);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,96 @@
+body.modal-open {
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+dialog {
+  overscroll-behavior: none;
+  overflow: visible;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 900px;
+  width: 60%;
+  max-width: 1400px;
+  border: 0;
+  opacity: 0;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0%);
+  transition: all 800ms ease-in-out 100ms;
+
+  &.appear {
+    opacity: 1;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 90%);
+  }
+
+  &::backdrop {
+    backdrop-filter: blur(0);
+    opacity: 0;
+    background: rgb(0 0 0 / 0%);
+    cursor: pointer;
+    transition: all 600ms ease-in;
+  }
+
+  body.modal-open &::backdrop {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+    background: rgb(0 0 0 / 85%);
+  }
+
+  body.modal-open.modal-close &::backdrop {
+    backdrop-filter: blur(0);
+    opacity: 0;
+    background: rgb(0 0 0 / 0%);
+  }
+
+  .content {
+    width: 100%;
+
+    iframe {
+      width: 100%;
+      max-height: 90vh;
+      border: none;
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: -40px;
+    right: -10px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    line-height: 0;
+    cursor: pointer;
+
+    .icon.icon-close {
+      content: '';
+      width: 24px;
+      height: 24px;
+
+      &::before, &::after {
+        content: '';
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 24px;
+        height: 2px;
+        border-radius: 2px;
+        background: #fff;
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg)
+      }
+    }
+  }
+}
+
+

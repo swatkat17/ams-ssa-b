@@ -1,0 +1,71 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword, declaration-block-single-line-max-declarations */
+
+.carousel {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .slides {
+    position: relative;
+    list-style: none;
+    display: flex;
+    height: inherit;
+
+    .slide {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      background: green;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 700ms ease-in; /* match fadeDuration in js */
+
+      &.active, &.transition { display: block; opacity: 1; }
+      &.active { position: relative }
+      &.ready { display: block }
+      &.transition { z-index: 2 }
+    }
+  }
+
+  nav {
+    display: inline-block;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 16px;
+    height: 32px;
+    min-width: 72px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-weight: 700;
+
+    .count {
+      display: inline-block;
+      margin: 0 8px;
+    }
+
+    button {
+      display: inline-block;
+      height: inherit;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+      &.prev { margin-left: -14px; }
+      &.next { margin-right: -14px; }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
