@@ -214,9 +214,9 @@ main > .section > div.roadmap-wrapper {
           width: 15%;
         }
 
-        &.disabled > div {
-          display: none;
-
+        &.disabled {
+          cursor: default;
+          > div { display: none }
         }
 
         /* circle buttons */
