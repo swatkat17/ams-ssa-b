@@ -20,7 +20,7 @@ function autolinkModals(element) {
     if (
       origin
       && origin.href
-      && (origin.href.includes('/modals/') || origin.href.includes('/projects/'))
+      && (origin.href.includes('/modals/') || origin.href.includes('/learnmore/'))
     ) {
       e.preventDefault();
       const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
@@ -138,6 +138,8 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+  const browserLocale = navigator.language || navigator.userLanguage;
+  alert(browserLocale);
 }
 
 loadPage();
