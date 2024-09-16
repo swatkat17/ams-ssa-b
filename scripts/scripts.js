@@ -138,8 +138,6 @@ async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
-  const browserLocale = navigator.language || navigator.userLanguage;
-  alert(browserLocale);
 }
 
 loadPage();
