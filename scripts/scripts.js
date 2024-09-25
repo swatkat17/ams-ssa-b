@@ -11,6 +11,7 @@ import {
   loadSections,
   loadCSS,
   sampleRUM,
+  getMetadata,
 } from './aem.js';
 
 function autolinkModals(element) {
@@ -73,7 +74,12 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  //document.documentElement.lang = 'en';
+  //const userLang = navigator.language || navigator.userLanguage;
+  //document.documentElement.lang = userLang;
+  //alert(document.documentElement.lang);
+  const locale = getMetadata("locale");
+  alert(locale);
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
