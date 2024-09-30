@@ -78,8 +78,8 @@ async function loadEager(doc) {
   //const userLang = navigator.language || navigator.userLanguage;
   //document.documentElement.lang = userLang;
   //alert(document.documentElement.lang);
-  const locale = getMetadata("locale");
-  alert(locale);
+ //const locale = getMetadata("locale");
+  //alert(locale);
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
