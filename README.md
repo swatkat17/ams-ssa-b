@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: [https://main--{repo}--{owner}.aem.page/](https://main--ams-ssa-b--swatkat17.aem.page/)
+- Live: h[ttps://main--{repo}--{owner}.aem.live/](https://main--ams-ssa-b--swatkat17.aem.live/)
 
 ## Installation
 
