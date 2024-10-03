@@ -75,9 +75,36 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   //document.documentElement.lang = 'en';
-  //const userLang = navigator.language || navigator.userLanguage;
-  //document.documentElement.lang = userLang;
-  //alert(document.documentElement.lang);
+  const userLang = navigator.language || navigator.userLanguage;
+  document.documentElement.lang = userLang;
+  alert(document.documentElement.lang);
+
+  // Create an object mapping languages to URLs
+const urlMap = {
+  'en': 'https://main--ams-ssa--swatkat17.hlx.live/en/', // English URL
+  'fr': 'https://main--ams-ssa--swatkat17.hlx.live/fr/', // French URL
+  'de': 'https://main--ams-ssa--swatkat17.hlx.live/de/', // German URL
+  'default': 'https://main--ams-ssa--swatkat17.hlx.live/' 
+};
+
+// Function to get the correct URL based on the language
+function getUrlForLang(language) {
+  // Extract the base language (e.g., 'en', 'fr') from 'en-US', 'fr-CA', etc.
+  const baseLang = language.split('-')[0];
+  
+  // Return the mapped URL or the default if the language is not in the map
+  return urlMap[baseLang] || urlMap['default'];
+}
+
+// Get the appropriate URL for the user's language
+const urlForLang = getUrlForLang(userLang);
+
+// Display the URL or perform any redirection
+console.log(`URL for user language (${userLang}): ${urlForLang}`);
+
+// Optionally, redirect to the URL
+window.location.href = urlForLang;
+
  //const locale = getMetadata("locale");
   //alert(locale);
   decorateTemplateAndTheme();
