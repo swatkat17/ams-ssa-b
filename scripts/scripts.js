@@ -77,7 +77,7 @@ async function loadEager(doc) {
   //document.documentElement.lang = 'en';
   const userLang = navigator.language || navigator.userLanguage;
   document.documentElement.lang = userLang;
-  alert(document.documentElement.lang);
+  //alert(document.documentElement.lang);
 
   // Create an object mapping languages to URLs
 const urlMap = {
