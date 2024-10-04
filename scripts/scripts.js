@@ -74,39 +74,36 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  //document.documentElement.lang = 'en';
-  const userLang = navigator.language || navigator.userLanguage;
+  // Detect the user's language or fallback to 'en' if unavailable
+  const userLang = navigator.language || navigator.userLanguage || 'en';
   document.documentElement.lang = userLang;
-  //alert(document.documentElement.lang);
 
   // Create an object mapping languages to URLs
 const urlMap = {
-  'en': 'https://main--ams-ssa--swatkat17.hlx.live/en/', // English URL
-  'fr': 'https://main--ams-ssa--swatkat17.hlx.live/fr/', // French URL
-  'de': 'https://main--ams-ssa--swatkat17.hlx.live/de/', // German URL
-  'default': 'https://main--ams-ssa--swatkat17.hlx.live/' 
+  en: '/en/',  // English content path
+  fr: '/fr/',  // French content path
+  de: '/de/',  // German content path
+  default: '/' // Default path 
 };
 
-// Function to get the correct URL based on the language
-function getUrlForLang(language) {
-  // Extract the base language (e.g., 'en', 'fr') from 'en-US', 'fr-CA', etc.
-  const baseLang = language.split('-')[0];
-  
-  // Return the mapped URL or the default if the language is not in the map
-  return urlMap[baseLang] || urlMap['default'];
+// Function to get the content path based on language
+function getContentPathForLang(language) {
+  const baseLang = language.split('-')[0]; // Extract base language (e.g., 'en' from 'en-US')
+  return urlMap[baseLang] || urlMap.default; // Fallback to 'default' if language not in the map
 }
 
-// Get the appropriate URL for the user's language
-const urlForLang = getUrlForLang(userLang);
+// Get the content path for the user's language
+const contentPath = getContentPathForLang(userLang);
 
-// Display the URL or perform any redirection
-console.log(`URL for user language (${userLang}): ${urlForLang}`);
+// Perform a soft redirect only if the current path is different
+if (window.location.pathname !== contentPath) {
+  // Use history.pushState to change the URL without reloading the page
+  window.history.pushState(null, '', contentPath);
 
-// Optionally, redirect to the URL
-window.location.href = urlForLang;
+  // Optionally, load new content for the current language
+  await loadContent(contentPath);
+}
 
- //const locale = getMetadata("locale");
-  //alert(locale);
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
@@ -124,6 +121,30 @@ window.location.href = urlForLang;
     }
   } catch (e) {
     // do nothing
+  }
+}
+
+// Function to dynamically load new content for the soft redirect
+async function loadContent(contentPath) {
+  try {
+    // Fetch the content for the given language path (e.g., '/en/', '/fr/')
+    const response = await fetch(`${window.hlx.codeBasePath}${contentPath}content.json`);
+    
+    if (response.ok) {
+      const contentData = await response.json();
+      
+      // Update the main content of the page without reloading
+      const main = document.querySelector('main');
+      if (main) {
+        main.innerHTML = ''; // Clear existing content
+        // Append new content (based on your actual content structure)
+        main.innerHTML = contentData.html; 
+      }
+    } else {
+      console.error('Error fetching content:', response.status);
+    }
+  } catch (error) {
+    console.error('Failed to load content:', error);
   }
 }
 
